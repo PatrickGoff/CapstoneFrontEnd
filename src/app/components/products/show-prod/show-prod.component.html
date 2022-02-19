@@ -1,0 +1,62 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click)="modalAdd()"
+>
+  Add Product
+</button>
+
+
+<table class="table table-striped">
+<thead>
+  <th>ID</th>  
+  <th>Name</th>
+  <th>Description</th>
+  <th>SKU</th>
+  <th>Category ID</th>
+  <th>Price</th>
+  <th>Seller ID</th>
+  <th>Options</th>
+</thead>
+<tbody>
+    <tr *ngFor = "let item of Product$|async">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        <td>{{item.desc}}</td>
+        <td>{{item.sku}}</td>
+        <td>{{CategoryKeyMap.get(item.id)</td>
+        <td>{{item.price}}</td>
+        <td>{{item.sellerid}}</td>
+        <td><a href="#">Edit</a> <a href="#">Delete</a></td>
+    </tr>
+</tbody>
+
+</table>
+
+<div class="alert alert-success" role="alert" id="add-success-alert">
+  Product added!
+</div>
+<div class="alert alert-success" role="alert" id="update-success-alert">
+  Product updated!
+</div>
+<div class="alert alert-success" role="alert" id="delete-success-alert">
+  Product deleted!
+</div>
+
+
+
+<!-- Add New Product Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click) = "modalClose()" id = "add-edit-modal-close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-prod [prod] = "prod" *ngIf=" activateAddEditProdComp"></app-add-edit-prod>
+      </div>
+      
+    </div>
+  </div>
+</div>

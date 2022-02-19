@@ -1,0 +1,11 @@
+<form>
+    <div class="mb-3">
+        <label for="id" class="form-label">Product</label>
+        <!-- <input type="text" class="form-control" name="id" [(ngModel)]="id" *ngIf="Product.id!=0" disabled>  -->
+        <select class="form-control" name="id" id="id" [(ngModel)]
+        ="id" *ngIf="prod.id == 0 ">
+    
+    <option *ngFor="let type of Product$|async " [value]="type.id">{{type.name}}       </option>   
+    </select>
+    </div>
+</form>
