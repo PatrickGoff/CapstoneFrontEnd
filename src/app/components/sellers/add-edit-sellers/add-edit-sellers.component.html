@@ -1,0 +1,34 @@
+<form>
+    <div class="mb-3">
+     
+ 
+    <label for="id" class="form-label">Name</label>
+   <input type="text" class="form-control" name="name" id="name" [(ngModel)]="name" />
+
+
+ 
+ 
+    </div>
+   
+    <button (click)="AddSeller()" *ngIf="sell.id==0" class="btn btn-danger">Add Seller</button>
+
+    <button (click)="UpdateSeller()" *ngIf="sell.id!=0" class="btn btn-danger">Update Seller</button>
+    
+
+</form>
+  
+
+ 
+  
+
+     
+
+   
+    
+ 
+  
+   
+  
+
+
+   

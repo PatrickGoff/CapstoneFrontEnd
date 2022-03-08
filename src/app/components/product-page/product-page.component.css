@@ -1,0 +1,32 @@
+.card-top{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background: #fff;
+    background-clip: border-box;
+    border:red;
+    border-radius: .25rem;
+}
+
+.item{
+    padding: 5px;
+    padding-right: 6px;
+    
+    background-color: bisque ;
+    border-color: red;
+}
+
+
+h6{
+    font-weight: bold;
+    text-align: center;
+}
+
+thead{
+    font-weight: bold;
+    
+}
+
+

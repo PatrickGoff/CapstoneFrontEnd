@@ -1,7 +1,7 @@
 
 import { Component, OnInit, Input } from '@angular/core';
 import { SharedService } from '../../shared.service';
-import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-add-edit-prod',
@@ -10,9 +10,8 @@ import { Observable } from 'rxjs';
 })
 export class AddEditProdComponent implements OnInit {
 
-  Product$: Observable<any[]>;
-  Category$: Observable<any[]>;
-  Seller$: Observable<any[]>;
+  
+ 
 
   constructor(private service:SharedService) { }
 
@@ -20,26 +19,44 @@ export class AddEditProdComponent implements OnInit {
 
 
 @Input() prod:any;
-id: number = 0;
-name:string = "";
-desc:string = "";
-sku: number = 0;
-categoryID: number;
-price:number = 0;
-sellerID:number;
+id: number;
+name:string;
+desc:string;
+sku: number;
+categoryid: number;
+price:number;
+sellerid:number;
+
+
+Product:any = [];
+Category:any = [];
+Seller:any = [];
+  
 
   ngOnInit(): void {
-  this.id = this.prod.id;
-  this.name = this.prod.name;
-  this.desc = this.prod.desc;
-  this.sku = this.prod.sku;
-  this.categoryID = this.prod.categoryID;
-  this.price = this.prod.price;
-  this.sellerID = this.prod.sellerID;
-  this.Product$ = this.service.GetProduct();
-  this.Category$ = this.service.GetCategory();
-  this.Seller$ = this.service.GetSeller();
+  //  this.id = this.prod.id;
+    this.name = this.prod.name;
+    this.desc = this.prod.desc;
+    this.sku = this.prod.sku;
+    this.categoryid = this.prod.categoryid;
+    this.price = this.prod.price;
+    this.sellerid = this.prod.sellerid;
+    this.refreshProduct();
+
+
+
+     this.service.GetCategory().subscribe((category) =>{this.Category = category 
+     console.log(this.Category);
+  
+    });
+
+   //this.getService.getCategories().subscribe((category) =>(this.category = category));
+
+    this.service.GetSeller().subscribe((seller) =>{this.Seller = seller 
+      console.log(this.Seller);
+     });
   }
+
 
   AddProduct(){
     var prod = {
@@ -47,29 +64,46 @@ sellerID:number;
   name:this.name,
   desc:this.desc,
   sku:this.sku,
-  categoryID:this.categoryID,
+  categoryid:this.categoryid,
+  catg:{ id:0, name:"", desc:""},
   price:this.price,
-  sellerID:this.sellerID
-    }
+  sellerid:this.sellerid,
+  sell:{ id:0, name:""}
+  
+  
+    };
+
+    console.log(prod);
     this.service.AddProduct(prod).subscribe(res =>{
-      var closeModalBtn = document.getElementById('add-edit-modal-close');
-      if(closeModalBtn){
-        closeModalBtn.click();
-      }
-
-      var showAddSuccess = document.getElementById('add-success-alert')
-      if(showAddSuccess){
-        showAddSuccess.style.display = 'block';
-      }
-
-      setTimeout(function() {
-        if(showAddSuccess){
-          showAddSuccess.style.display = "none"
-        }
-      },4000);
-    })
+      console.log(res.toString());
+      alert("Product added!")
+    });
   }
 
+  UpdateProduct(){
+    var prod = {
+  id:this.prod.id,  
+  name:this.name,
+  desc:this.desc,
+  sku:this.sku,
+  categoryID:this.categoryid,
+  price:this.price,
+  sellerID:this.sellerid,
+  catg:{id:0, name:'', desc:''},
+  sell:{id:0, name:''}
+  
+    };
 
+    console.log(prod);
+    this.service.UpdateProduct(prod).subscribe(res =>{
+      console.log(res.toString());
+      alert("Product Updated!")
+    });
+  }
 
-}
+  refreshProduct(){
+     this.service.GetProduct().subscribe(data=>{
+      this.Product = data;
+    });
+   }
+  }

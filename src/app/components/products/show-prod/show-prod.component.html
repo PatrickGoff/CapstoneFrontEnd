@@ -1,5 +1,9 @@
+
+
+
+
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+<button type="button" class="btn btn-danger float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
 (click)="modalAdd()"
 >
   Add Product
@@ -18,35 +22,32 @@
   <th>Options</th>
 </thead>
 <tbody>
-    <tr *ngFor = "let item of Product$|async">
-        <td>{{item.id}}</td>
-        <td>{{item.name}}</td>
-        <td>{{item.desc}}</td>
-        <td>{{item.sku}}</td>
-        <td>{{CategoryKeyMap.get(item.id)</td>
-        <td>{{item.price}}</td>
-        <td>{{item.sellerid}}</td>
-        <td><a href="#">Edit</a> <a href="#">Delete</a></td>
+    <tr *ngFor = "let dataitem of Product">
+        <td>{{dataitem.id}}</td>
+        <td>{{dataitem.name}}</td>
+        <td>{{dataitem.desc}}</td>
+        <td>{{dataitem.sku}}</td>
+        <td>{{dataitem.categoryid}}</td>
+        <td>{{dataitem.price}}</td>
+        <td>{{dataitem.sellerid}}</td>
+        <td><button data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+         (click) = "editClick(dataitem)"
+          >Edit</button> &nbsp; 
+          
+          <button (click) = "deleteClick(dataitem)">Delete</button></td>
+          
     </tr>
 </tbody>
 
 </table>
 
-<div class="alert alert-success" role="alert" id="add-success-alert">
-  Product added!
-</div>
-<div class="alert alert-success" role="alert" id="update-success-alert">
-  Product updated!
-</div>
-<div class="alert alert-success" role="alert" id="delete-success-alert">
-  Product deleted!
-</div>
+
 
 
 
 <!-- Add New Product Modal -->
 <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-  <div class="modal-dialog">
+  <div class="modal-dialog modal-dialog-centered modal-xl">
     <div class="modal-content">
       <div class="modal-header">
         <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>

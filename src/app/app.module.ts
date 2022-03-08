@@ -13,6 +13,25 @@ import {HttpClientModule} from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddEditCatgComponent } from './components/categories/add-edit-catg/add-edit-catg.component';
 import { ShowCatgComponent } from './components/categories/show-catg/show-catg.component';
+import { SellersComponent } from './components/sellers/sellers.component';
+import { AddEditSellersComponent } from './components/sellers/add-edit-sellers/add-edit-sellers.component';
+import { ShowSellersComponent } from './components/sellers/show-sellers/show-sellers.component';
+
+import { InventoriesComponent } from './components/inventories/inventories.component';
+import { ShowInvComponent } from './components/inventories/show-inv/show-inv.component';
+import { AddEditInvComponent } from './components/inventories/add-edit-inv/add-edit-inv.component';
+import { LoginComponent } from './user/login/login.component';
+import { AdminComponent } from './components/admin/admin.component';
+import { HomeComponent } from './components/home/home.component';
+import { RegisterComponent } from './user/register/register.component';
+import { NavBarComponent } from './components/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { ProductPageComponent } from './components/product-page/product-page.component';
+import { AboutComponent } from './components/about/about.component';
+import { CategoryPageComponent } from './components/category-page/category-page.component';
+import { UserComponent } from './user/user.component';
+import { CartComponent } from './components/cart/cart.component';
+
 
 
 
@@ -25,6 +44,25 @@ import { ShowCatgComponent } from './components/categories/show-catg/show-catg.c
     AddEditProdComponent,
     AddEditCatgComponent,
     ShowCatgComponent,
+    SellersComponent,
+    AddEditSellersComponent,
+    ShowSellersComponent,
+    InventoriesComponent,
+    ShowInvComponent,
+    AddEditInvComponent,
+    LoginComponent,
+    AdminComponent,
+    HomeComponent,
+    RegisterComponent,
+    NavBarComponent,
+    FooterComponent,
+    ProductPageComponent,
+    AboutComponent,
+    CategoryPageComponent,
+    UserComponent,
+    CartComponent,
+ 
+   
     
     
   ],

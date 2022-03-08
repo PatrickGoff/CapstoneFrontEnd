@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../shared.service';
-import { Observable } from 'rxjs';
+
 
 
 
@@ -12,57 +12,54 @@ import { Observable } from 'rxjs';
 })
 export class ShowProdComponent implements OnInit {
 
-Product$:Observable<any[]>;
-Category$:Observable<any[]>;
-Category:any=[];
-InventoryList$:Observable<any[]>;
-Cart_ItemList$:Observable<any[]>;
-Product_SoldList$:Observable<any[]>;
-Seller$:Observable<any[]>;
+Product:any=[];
 Seller:any=[];
+Category:any=[];
 
 
 //Will create Map later
 
-CategoryKeyMap:Map<number, string> = new Map()
-SellerKeyMap:Map<number, string> = new Map()
+
 
 
   constructor(private service:SharedService) { }
 
   ngOnInit(): void {
-    this.Product$ = this.service.GetProduct();
-    this.Category$ = this.service.GetCategory();
-    this.Seller$ = this.service.GetSeller();
-    this.refreshCategoryKeyMap();
-    this.refreshSellerKeyMap();
+     
+   
+    this.refreshProduct();
+  
   }
 
 
+refreshProduct(){
+  this.service.GetProduct().subscribe(data =>{
+    this.Product = data;
+  });
+}
 
 
+  // refreshCategoryKeyMap(){
+  //   this.service.GetCategory().subscribe(data => {
+  //     this.Category = data;
 
-  refreshCategoryKeyMap(){
-    this.service.GetCategory().subscribe(data => {
-      this.Category = data;
+  //     for(let i = 0; i < data.length; i++){
+  //       this.CategoryKeyMap.set(this.Category[i].id, this.Category[i].
+  //         name);
+  //     }
+  //   })
+  // }
 
-      for(let i = 0; i < data.length; i++){
-        this.CategoryKeyMap.set(this.Category[i].id, this.Category[i].
-          name);
-      }
-    })
-  }
+  // refreshSellerKeyMap(){
+  //   this.service.GetSeller().subscribe(data => {
+  //     this.Seller = data;
 
-  refreshSellerKeyMap(){
-    this.service.GetSeller().subscribe(data => {
-      this.Seller = data;
-
-      for(let i = 0; i < data.length; i++){
-        this.SellerKeyMap.set(this.Seller[i].id, this.Seller[i].
-          name);
-      }
-    })
-  }
+  //     for(let i = 0; i < data.length; i++){
+  //       this.SellerKeyMap.set(this.Seller[i].id, this.Seller[i].
+  //         name);
+  //     }
+  //   })
+  // }
 
   modalTitle:string = '';
   activateAddEditProdComp:boolean = false;
@@ -72,12 +69,12 @@ SellerKeyMap:Map<number, string> = new Map()
   modalAdd(){
     this.prod ={
       id:0,
-      name:null,
-      desc:null,
-      sku:null,
-      categoryID:null,
-      price:null,
-      sellerID:null
+      name:"",
+      desc:"",
+      sku:0,
+      categoryid:0,
+      price:0,
+      sellerid:0
     }
     this.modalTitle = "Add Product";
     this.activateAddEditProdComp = true;
@@ -86,9 +83,28 @@ SellerKeyMap:Map<number, string> = new Map()
 
   modalClose(){
     this.activateAddEditProdComp = false;
-    this.Product$ = this.service.GetProduct();
+    this.refreshProduct();
+  }
+
+  editClick(dataitem){
+    this.prod = dataitem;
+    this.modalTitle = "Edit Product";
+    this.activateAddEditProdComp = true;
+  }
+
+  deleteClick(dataitem){
+    if(confirm('Are you sure?')){
+      this.service.DeleteProduct(dataitem.id).subscribe(data =>{
+        console.log(data.toString());
+        this.refreshProduct();
+        alert("Product deleted!")
+      });
+    }
   }
   
+  
+
+
 }  
  
   

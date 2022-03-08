@@ -1,0 +1,12 @@
+h1{
+    font-weight: bold;
+    color:red
+}
+
+.banner{
+    background-image: url(../../../assets/Images/AboutImage.jpg);
+    height: 600px;
+    width:auto;
+    background-position: center;
+    background-size: cover;
+}

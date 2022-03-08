@@ -1,0 +1,17 @@
+
+.navbar-light .navbar-nav .nav-link
+{
+color: black;
+
+}
+
+
+.navbar-light .navbar-nav .nav-link.active-link
+{
+color: red;
+font-weight: bold;
+text-decoration: underline;
+}
+
+
+

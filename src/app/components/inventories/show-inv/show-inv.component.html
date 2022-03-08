@@ -1,0 +1,55 @@
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click)="modalAdd()"
+>
+  Add Inventory
+</button>
+
+
+
+
+
+
+<table class="table table-striped">
+    <thead>
+      <th>ID</th>  
+      <th>Product ID</th>
+      <th>Quantity</th>
+      <th>Reorder</th>
+     
+    
+      <th>Options</th>
+    </thead>
+    <tbody>
+        <tr *ngFor = "let item of Inventory">
+            <td>{{item.id}}</td>
+            <td>{{item.productid}}</td>
+              <td>{{item.quantity}}</td>
+            <td>{{item.reorder}}</td>
+          
+           
+            <td><button data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="editClick(item)">Edit</button> &nbsp; <button (click)="deleteClick(item)">Delete</button></td>
+        </tr>
+    </tbody>
+    
+    </table>
+
+
+
+<!-- Add New Product Modal -->
+<div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-xl">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+          (click) = "modalClose()" id = "add-edit-modal-close"></button>
+        </div>
+        <div class="modal-body">
+          <app-add-edit-inv [inv] = "inv" *ngIf=" activateAddEditInvComp"></app-add-edit-inv>
+        </div>
+        
+      </div>
+    </div>
+  </div>

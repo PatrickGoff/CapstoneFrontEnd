@@ -1,1 +1,30 @@
-<p>add-edit-catg works!</p>
+<form>
+    <div class="mb-3">
+     
+ 
+    <label for="id" class="form-label">Name</label>
+   <input type="text" class="form-control" name="name" id="name" [(ngModel)]="name" />
+ 
+   
+    <label for="exampleFormControlTextarea3">Description</label>
+    <textarea class="form-control" id="exampleFormControlTextarea3" rows="7" name="desc" [(ngModel)]="desc"></textarea>
+ </div>
+
+   
+  
+<button (click)="AddCategory()" *ngIf="catg.id==0" class="btn btn-danger">Add Category</button>
+
+<button (click)="UpdateCategory()" *ngIf="catg.id!=0" class="btn btn-danger">Update Category</button>
+
+     
+</form>
+   
+  
+    
+ 
+  
+   
+  
+
+
+   

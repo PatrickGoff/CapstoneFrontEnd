@@ -1,0 +1,40 @@
+<div class="card-top container-fluid">
+    <div class="container d-flex">
+   
+    <div class="item" *ngFor="let cg of Category">
+        <input type="radio" value="">
+        <h6>{{cg.name}}</h6>
+    </div>
+    
+    
+    </div>
+    
+    </div>
+
+
+    <div>
+
+<table class="table table-striped">
+    <thead>
+    <td>Product</td>
+    <td>Price</td>
+    <td>Description</td>
+    <td>Options</td>
+    </thead>
+    <tbody>
+<tr *ngFor="let item of Product">
+    <td>{{item.name}}</td>
+    <td>${{item.price}}</td>
+    <td>{{item.desc}}</td>
+    <td><button>
+        Add to Cart
+    </button></td>
+
+
+</tr>
+
+    </tbody>
+</table>
+
+    </div>
+    

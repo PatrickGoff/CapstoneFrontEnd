@@ -9,6 +9,13 @@ export class SharedService {
 readonly APIURL = "https://localhost:7294/api";
   constructor(private http:HttpClient) { }
 
+ //Authoriazation
+
+ 
+ 
+ 
+ 
+ 
   //Product Table
 
   GetProduct():Observable<any[]>{
@@ -18,23 +25,23 @@ readonly APIURL = "https://localhost:7294/api";
 
   GetProductByID():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/Products/${id}');
+    return this.http.get<any>(this.APIURL+ '/Products/');
   }
 
 
   AddProduct(val:any){
 
-    return this.http.post(this.APIURL+ '/Products', val);
+    return this.http.post(this.APIURL + '/Products', val);
   }
 
-  UpdateProduct(id:number|string,val:any){
+  UpdateProduct(val:any){
 
-    return this.http.put(this.APIURL+ '/Products',val);
+    return this.http.put(this.APIURL + '/Products', val);
   }
 
-  DeleteProduct(id:number|string,val:any){
+  DeleteProduct(val:any){
 
-    return this.http.delete(this.APIURL+ '/Products/${id}' + val);
+    return this.http.delete(this.APIURL + '/Products/' + val);
   }
 
   //Category Table
@@ -47,7 +54,7 @@ readonly APIURL = "https://localhost:7294/api";
 
   GetCategoryByID():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/Categories/${id}');
+    return this.http.get<any>(this.APIURL+ '/Categories/');
   }
 
   AddCategory(val:any){
@@ -62,7 +69,7 @@ readonly APIURL = "https://localhost:7294/api";
 
   DeleteCategory(val:any){
 
-    return this.http.delete(this.APIURL+ '/Categories/${id}' + val);
+    return this.http.delete(this.APIURL+ '/Categories/' + val);
   }
 
   //Cart Item Table
@@ -75,7 +82,7 @@ readonly APIURL = "https://localhost:7294/api";
 
   GetCart_ItemByID():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/Cart Items/${id}');
+    return this.http.get<any>(this.APIURL+ '/Cart Items/{id}');
   }
 
   AddCart_Item(val:any){
@@ -90,7 +97,7 @@ readonly APIURL = "https://localhost:7294/api";
 
   DeleteCart_Item(val:any){
 
-    return this.http.delete(this.APIURL+ '/Cart_Items/${id}' + val);
+    return this.http.delete(this.APIURL+ '/Cart_Items/{id}' + val);
   }
 
 
@@ -103,7 +110,7 @@ readonly APIURL = "https://localhost:7294/api";
 
   GetSellerByID():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/Sellers/${id}');
+    return this.http.get<any>(this.APIURL+ '/Sellers/');
   }
 
   AddSeller(val:any){
@@ -112,68 +119,71 @@ readonly APIURL = "https://localhost:7294/api";
   }
 
   UpdateSeller(val:any){
-
+console.log(val);
     return this.http.put(this.APIURL+ '/Sellers',val);
   }
 
   DeleteSeller(val:any){
 
-    return this.http.delete(this.APIURL+ '/api/Sellers/${id}' + val);
+    return this.http.delete(this.APIURL+ '/Sellers/' + val);
   }
 
   // Inventory Table
 
   GetInventory():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/api/Inventories');
+    return this.http.get<any>(this.APIURL+ '/Inventories');
   }
 
   GetInventoryByID():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/Inventories/${id}');
+    return this.http.get<any>(this.APIURL+ '/Inventories/');
   }
 
   AddInventory(val:any){
 
-    return this.http.post(this.APIURL+ '/api/Inventories', val);
+    return this.http.post(this.APIURL+ '/Inventories', val);
   }
 
   UpdateInventory(val:any){
 
-    return this.http.put(this.APIURL+ '/api/Inventories',val);
+    return this.http.put(this.APIURL+ '/Inventories',val);
   }
 
   DeleteInventory(val:any){
 
-    return this.http.delete(this.APIURL+ '/api/Inventories/${id}' + val);
+    return this.http.delete(this.APIURL+ '/Inventories/' + val);
   }
 
   // Product Sold Table
 
   GetProductSold():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/api/Product_Sold');
+    return this.http.get<any>(this.APIURL+ '/Product_Sold');
   }
 
   GetProductSoldByID():Observable<any[]>{
 
-    return this.http.get<any>(this.APIURL+ '/Product_Sold/${id}');
+    return this.http.get<any>(this.APIURL+ '/Product_Sold/{id}');
   }
 
   AddProductSold(val:any){
 
-    return this.http.post(this.APIURL+ '/api/Product_Sold', val);
+    return this.http.post(this.APIURL+ '/Product_Sold', val);
   }
 
   UpdateProductSold(val:any){
 
-    return this.http.put(this.APIURL+ '/api/Product_Sold',val);
+    return this.http.put(this.APIURL+ '/Product_Sold',val);
   }
 
   DeleteProductSold(val:any){
 
-    return this.http.delete(this.APIURL+ '/api/Product_Sold/${id}' + val);
+    return this.http.delete(this.APIURL+ '/Product_Sold/' + val);
   }
+
+
+
 
 
 

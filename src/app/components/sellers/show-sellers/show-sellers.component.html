@@ -1,0 +1,47 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-danger float-end m-2" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+(click)="modalAdd()"
+>
+  Add Seller
+</button> 
+
+
+<table class="table table-striped">
+<thead>
+  <th>ID</th>  
+  <th>Name</th>
+ 
+  <th>Options</th>
+</thead>
+<tbody>
+    <tr *ngFor = "let item of Seller">
+        <td>{{item.id}}</td>
+        <td>{{item.name}}</td>
+        
+        <td><button data-bs-toggle="modal" data-bs-target="#staticBackdrop" (click)="editModal(item)">Edit</button>
+           &nbsp; <button (click)="deleteClick(item)">Delete</button></td>
+    </tr>
+</tbody>
+
+</table>
+
+
+
+
+
+<!-- Add New Product Modal -->
+ <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel">{{modalTitle}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+        (click) = "modalClose()" id = "add-edit-modal-close"></button>
+      </div>
+      <div class="modal-body">
+        <app-add-edit-sellers [sell] = "sell" *ngIf=" activateAddEditSellComp"></app-add-edit-sellers>
+      </div>
+      
+    </div>
+  </div>
+</div> 

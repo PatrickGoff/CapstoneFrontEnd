@@ -1,0 +1,30 @@
+<form>
+    <div class="mb-3">
+     
+ 
+ 
+  
+
+      <label for="id" class="form-label">Product ID</label>
+       
+        <select class="form-control" [(ngModel)] ="ProductID" name="ProductID" id="ProductID" >
+       
+         <option *ngFor="let type of Product " [value]="type.id">{{type.name}}       </option>   
+    </select>
+
+    <label for="id" class="form-label">Quantity</label>
+    <input type="number" class="form-control"  [(ngModel)]="quantity" name="quantity" id="quantity" placeholder="Enter Quantity" />
+  
+    <label for="id" class="form-label">Reorder</label>
+    <input type="number" class="form-control"  [(ngModel)]="reorder" name="reorder" id="reorder" placeholder="Enter Reorder" />
+  
+ 
+  </div>
+   
+  
+<button (click)="AddInventory()" *ngIf="inv.id==0" class="btn btn-danger">Add Product</button>
+
+<button (click)="UpdateInventory()" *ngIf="inv.id!=0" class="btn btn-danger">Update Product</button>
+
+    
+</form>
